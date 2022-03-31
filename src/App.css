@@ -1,0 +1,30 @@
+.navbar{
+    background-color:#b4a8bf;
+    box-shadow: 0px 5px 10px black;
+}
+.navbar-option{
+    margin-top: revert;
+    margin-bottom: revert;
+}
+.body-container{
+    background-color: #a6b3ba;
+    height: auto;
+    padding: 5rem 2rem 3rem 2rem;
+    box-shadow: 0px 5px 10px black;
+}
+
+.left-body{
+    display: flex;
+    padding: 5rem !important;
+}
+.song_info{
+    display: flex;
+    justify-content: space-between;
+}
+.controller{
+    display: flex;
+    justify-content: center;
+}
+.slider{
+    align-items: center;
+}
