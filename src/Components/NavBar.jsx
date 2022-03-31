@@ -1,10 +1,26 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Container, Form, FormControl, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { URL } from '../Redux/Constants';
+import axios from 'axios';
+import { useFormik } from 'formik';
+import { useDispatch } from 'react-redux';
+import { fetchMusic } from '../Redux/Action/fetchMusic';
 
 
+const initialValues = {
+    song: "",
+}
 export const NavBar = () => {
-    
+    const dispatch=useDispatch();
+    const { values, error, handleSubmit, handleChange, resetForm } = useFormik({
+        initialValues,
+        onSubmit: (values, { resetForm }) => {
+            console.log(values);
+            dispatch(fetchMusic(values.song));
+            resetForm();
+        },
+    });
   return (
     <Navbar className='navbar'  expand="lg">
                 <Container fluid className='navbar-container'>
@@ -19,14 +35,17 @@ export const NavBar = () => {
                             <Nav.Link href="#action1" ><h4 className='navbar-option'>Now Playing</h4></Nav.Link>
                             <Nav.Link href="#action2"><h4 className='navbar-option'>Explore</h4></Nav.Link>
                         </Nav>
-                        <Form className="d-flex">
+                        <Form className="d-flex" onSubmit={handleSubmit}>
                             <FormControl
                                 type="search"
+                                name='song'
                                 placeholder="Artist or Genre"
                                 className="me-2 rounded-pill"
                                 aria-label="Search"
+                                value={values.song}
+                                onChange={handleChange}
                             />
-                            <Button variant="outline-success" className='rounded-pill'>Search</Button>
+                            <Button type='submit' variant="outline-success" className='rounded-pill'>Search</Button>
                         </Form>
                     </Navbar.Collapse>
                 </Container>
