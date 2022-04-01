@@ -1,10 +1,11 @@
-import { MUSIC_LIST_FETCHING,MUSIC_LIST_SUCCESS, PREVIEW_PLAYING} from "../Constants";
+import { MUSIC_LIST_FETCHING,MUSIC_LIST_SUCCESS, MUTE_MUSIC, PREVIEW_PAUSE, PREVIEW_PLAYING, PREVIEW_RESUME} from "../Constants";
 
 const initialState = {
   musics: [],
   isLoading: false,
   preview:"",
   isPlaying:false,
+  isMute:false,
 };
 
 const musicReducer = (state = initialState, action) => {
@@ -26,6 +27,21 @@ const musicReducer = (state = initialState, action) => {
             isPlaying:true,
             preview:action.payload,
         };
+    case PREVIEW_RESUME:
+      return{
+        ...state,
+        isPlaying:true,
+      };
+    case PREVIEW_PAUSE:
+      return{
+        ...state,
+        isPlaying:false,
+      }
+    case MUTE_MUSIC:
+      return {
+        ...state,
+        isMute:!state.isMute,
+      }
     default:
       return state;
   }

@@ -1,4 +1,4 @@
-import { PREVIEW_PLAYING } from "../Constants"
+import { MUTE_MUSIC, PREVIEW_PAUSE, PREVIEW_PLAYING, PREVIEW_RESUME } from "../Constants"
 
 export const playMusic=(preview)=>{
     return {
@@ -6,3 +6,19 @@ export const playMusic=(preview)=>{
         payload:preview,
     }
 };
+export const pauseMusic=()=>{
+    return{
+        type:PREVIEW_PAUSE,
+    }
+}
+
+export const resumeMusic=()=>{
+    return{
+        type:PREVIEW_RESUME,
+    }
+}
+export const muteMusic=()=>{
+    return{
+        type:MUTE_MUSIC,
+    }
+}

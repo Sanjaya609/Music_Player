@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { fetchMusic } from '../Redux/Action/fetchMusic';
 
 
+
 const initialValues = {
     song: "",
 }
@@ -18,13 +19,14 @@ export const NavBar = () => {
         onSubmit: (values, { resetForm }) => {
             console.log(values);
             dispatch(fetchMusic(values.song));
+            
             resetForm();
         },
     });
   return (
     <Navbar className='navbar'  expand="lg">
                 <Container fluid className='navbar-container'>
-                    <Navbar.Brand href="#" className='col-lg-2'><img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Deezer_logo.svg" alt="" /></Navbar.Brand>
+                    <Navbar.Brand href="/" className='col-lg-2'><img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Deezer_logo.svg" alt="" /></Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         <Nav
@@ -32,7 +34,6 @@ export const NavBar = () => {
                             style={{ maxHeight: '100px' }}
                             navbarScroll
                         >
-                            <Nav.Link href="#action1" ><h4 className='navbar-option'>Now Playing</h4></Nav.Link>
                             <Nav.Link href="#action2"><h4 className='navbar-option'>Explore</h4></Nav.Link>
                         </Nav>
                         <Form className="d-flex" onSubmit={handleSubmit}>

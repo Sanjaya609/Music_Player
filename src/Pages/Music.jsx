@@ -10,6 +10,11 @@ const Music = ({ songList }) => {
     const track=songList[0].preview;
     //console.log(track);
     dispatch(playMusic(track));
+  };
+  const playSong=(song)=>{
+    console.log('success');
+    const music= song.preview;
+    dispatch(playMusic(music));
   }
   return (
     <>
@@ -27,7 +32,7 @@ const Music = ({ songList }) => {
           {/* <h3 style={{'textAlign':'center',marginTop:'1rem'}}>{songList[0].artist.name}</h3> */}
         </div>
         <div className="col-xl-7" style={{ 'padding': '3rem' }}>
-          <h5>{songList[0].artist.name} {songList[0].title}</h5>
+          <h5>{songList[0].artist.name}  {songList[0].title}</h5>
           <h3>Deezer Rank: {songList[0].rank}</h3>
           <h5><a href={songList[0].link}>{songList[0].link}</a></h5>
         </div>
@@ -35,15 +40,16 @@ const Music = ({ songList }) => {
       </div>
       <div className="col-xl-4 right-body" >
         <h3>Explore</h3>
-        <h4>Select Track</h4>
+        <h4>Select track</h4>
         <div className="row" style={{ 'justifyContent': 'flex-start','overflow': 'scroll',
         'height':'450px',
         'overflowX': 'hidden'}}>
           {songList.map((song)=>(
-            <div key={song.id} className=" col-xl-5 card shadow p-3 bg-white rounded" style={{ "marginTop": "1rem",marginRight:'2rem', 'border': 'none', 'height': '210px' }}>
+            <div key={song.id} onClick={()=>playSong(song)} className=" col-xl-5 card shadow p-3 bg-white rounded" style={{ "marginTop": "1rem",marginRight:'2rem', 'border': 'none', 'height': '210px' }}>
               <div className="card-image" style={{ 'height': '80%', display: "flex", justifyContent: "center" }} >
                 <img src={song.artist.picture_big} alt='Artist image' style={{ 'width': '100%' }} />
               </div>
+              <h6>{song.title_short}</h6>
             </div>
           ))}
         </div>

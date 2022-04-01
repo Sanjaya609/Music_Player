@@ -1,17 +1,23 @@
 import React from 'react'
 import './App.css'
+import { Route, Router, Routes } from 'react-router-dom';
 import Musicplayer from './Musicplayer'
+
 import { Provider } from 'react-redux';
 import store from './Redux/Store';
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
 
   return (
-    <Provider store={store}>
+    <BrowserRouter><Provider store={store}>
       <div className="App">
-        <Musicplayer />
+      {<Routes>
+        <Route path='/' element={<Musicplayer/>} />
+      </Routes>}
       </div>
-    </Provider>
+    </Provider></BrowserRouter>
+
   )
 }
 
