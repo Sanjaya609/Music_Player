@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { fetchMusic } from '../Redux/Action/fetchMusic';
+import { useNavigate } from 'react-router';
 
 
 
@@ -14,12 +15,13 @@ const initialValues = {
 }
 export const NavBar = () => {
     const dispatch=useDispatch();
+    const navigate= useNavigate();
     const { values, error, handleSubmit, handleChange, resetForm } = useFormik({
         initialValues,
         onSubmit: (values, { resetForm }) => {
             console.log(values);
             dispatch(fetchMusic(values.song));
-            
+            navigate(`/song`);
             resetForm();
         },
     });
@@ -34,7 +36,7 @@ export const NavBar = () => {
                             style={{ maxHeight: '100px' }}
                             navbarScroll
                         >
-                            <Nav.Link href="#action2"><h4 className='navbar-option'>Explore</h4></Nav.Link>
+                            <Nav.Link><h4 className='navbar-option' onClick={()=>navigate(`/explore`)}>Explore</h4></Nav.Link>
                         </Nav>
                         <Form className="d-flex" onSubmit={handleSubmit}>
                             <FormControl

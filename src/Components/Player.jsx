@@ -55,7 +55,7 @@ export const Player = () => {
         {audio}
         <div className="col-xl-10" style={{ 'display': 'flex', height:"100%"}}>
                 <div className="song_info col-xl-2">
-                    <div className="song_name" style={{'overflow':'hidden'}}>{isPlaying?songList[index].title_short:null}</div>
+                    <div className="song_name" style={{'overflow':'hidden'}}>{isPlaying?songList[index]?.title_short:null}</div>
                 </div>
                 <div className="timeline col-xl-8">
                     <div className="row controller">

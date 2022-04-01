@@ -13,7 +13,7 @@ function App() {
     <BrowserRouter><Provider store={store}>
       <div className="App">
       {<Routes>
-        <Route path='/' element={<Musicplayer/>} />
+        <Route path='/*' element={<Musicplayer/>} />
       </Routes>}
       </div>
     </Provider></BrowserRouter>
