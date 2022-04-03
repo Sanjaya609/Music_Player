@@ -17,13 +17,13 @@ export const Songcard = () => {
   console.log(isActive);
   return (
     <>
-      <div className="tracklist"><ul className="list-group" style={{ 'padding': '3rem' }}>
+      <div className="tracklist"><ul className="list-group" style={{ 'padding': '2rem' }}>
         {tracks.slice(0, 9).map((track, index) => (
           <a href="#" id={track.id} className="list-group-item 
           list-group-item-action 
           list-group-item-primary"
           key={track.id} 
-          style={{'padding':'1rem 1rem 1rem 1rem'}}
+          style={{'padding':'0.7rem'}}
           onClick={()=>playTrack(track)}>
           {track.title} {isPlaying?track.preview===preview?<span style={{'float':'right'}}>Now Playing...  <BsMusicNoteList /></span>:null:null}</a>
         ))}
