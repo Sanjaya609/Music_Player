@@ -54,6 +54,7 @@ export const NavBar = () => {
                                 aria-label="Search"
                                 value={values.song}
                                 onChange={handleChange}
+                                required
                             />
                             <Button type='submit' variant="outline-success" className='rounded-pill'>Search</Button>
                         </Form>

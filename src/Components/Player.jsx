@@ -7,6 +7,7 @@ import { ImLoop2,ImVolumeMute2 } from 'react-icons/im';
 import { useDispatch, useSelector } from 'react-redux';
 import { useAudio } from 'react-use';
 import { muteMusic, pauseMusic, playMusic, resumeMusic } from '../Redux/Action/playMusic';
+import { Timer } from './Timer';
 
 
 export const Player = () => {
@@ -16,16 +17,16 @@ export const Player = () => {
     const songList = useSelector((state) => state.music.musics);
     const isMute= useSelector((state)=>state.music.isMute);
     const index =songList.findIndex(song=>song.preview===track);
-    console.log(songList);
+    //console.log(songList);
     const [audio, state, controls, ref] = useAudio({
         src: track,
         autoPlay: true,
       });
     //{isPlaying?controls.play:controls.pause};
-
+    //console.log(state.playing);
     const handlePause=(controls)=>{
         dispatch(pauseMusic());
-        console.log("pressed")
+        //console.log("pressed")
         controls.pause();
     };
     const handlePlay=(controls)=>{
@@ -59,24 +60,19 @@ export const Player = () => {
                 </div>
                 <div className="timeline col-xl-8">
                     <div className="row controller">
+                        {Timer(state.time)}
                         <span className="alink1" style={{width:'auto'}}><FaRandom /></span>
                         <span className="alink2" style={{width:'auto'}}><AiFillStepBackward onClick={()=>playPrevious(track)} /></span>
                         <span className="alink1" style={{width:'auto'}}><AiOutlineFastBackward onClick={() => controls.seek(state.time - 5)} /></span>
-                        <span className="alink3" style={{width:'auto'}}>{isPlaying?<BsFillPauseCircleFill onClick={()=>handlePause(controls)}/>:songList[0]?<BsFillPlayFill onClick={()=>handlePlay(controls)} />:<BsFillPlayFill onClick={()=>handlePlay(controls)} disabled={true} />}</span>
+                        <span className="alink3" style={{width:'auto'}}>{state.playing?<BsFillPauseCircleFill onClick={()=>handlePause(controls)}/>:songList[0]?<BsFillPlayFill onClick={()=>handlePlay(controls)} />:<BsFillPlayFill onClick={()=>handlePlay(controls)} disabled={true} />}</span>
                         <span className="alink1" style={{width:'auto'}}><AiOutlineFastForward  onClick={() => controls.seek(state.time + 5)}/></span>
                         <span className="alink4" style={{width:'auto'}}><AiFillStepForward onClick={()=>playNext(track)}/></span>
                         <span className="alink5" style={{width:'auto'}}><ImLoop2 /></span>
+                        {Timer(state.duration)}
                     </div>
-                    {/* <div className="row slider">
-                        <div className="current-time col-xl-1"><span>0:45</span></div>
-                        <div className="progress col-xl-10">
-                            <div className="progress-bar" role="progressbar" style={{ width: "25%" }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <div className="total-time col-xl-1"><span>3:00</span></div>
-                    </div> */}
                 </div>
                 <div className="song_info col-xl-2" style={{'marginLeft':'2rem'}}>
-                    <div className="volume">{isMute?<ImVolumeMute2 onClick={()=>unMute(controls)}/>:<ImVolumeHigh onClick={()=>mute(controls)}/>}</div>
+                    <div className="volume">{state.muted?<ImVolumeMute2 onClick={controls.unmute}/>:<ImVolumeHigh onClick={controls.mute}/>}</div>
                 </div>
             </div>
         </div>
