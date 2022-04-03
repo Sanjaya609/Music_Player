@@ -62,7 +62,7 @@ export const Player = () => {
                         <span className="alink1" style={{width:'auto'}}><FaRandom /></span>
                         <span className="alink2" style={{width:'auto'}}><AiFillStepBackward onClick={()=>playPrevious(track)} /></span>
                         <span className="alink1" style={{width:'auto'}}><AiOutlineFastBackward onClick={() => controls.seek(state.time - 5)} /></span>
-                        <span className="alink3" style={{width:'auto'}}>{isPlaying?<BsFillPauseCircleFill onClick={()=>handlePause(controls)}/>:<BsFillPlayFill onClick={()=>handlePlay(controls)} />}</span>
+                        <span className="alink3" style={{width:'auto'}}>{isPlaying?<BsFillPauseCircleFill onClick={()=>handlePause(controls)}/>:songList[0]?<BsFillPlayFill onClick={()=>handlePlay(controls)} />:<BsFillPlayFill onClick={()=>handlePlay(controls)} disabled={true} />}</span>
                         <span className="alink1" style={{width:'auto'}}><AiOutlineFastForward  onClick={() => controls.seek(state.time + 5)}/></span>
                         <span className="alink4" style={{width:'auto'}}><AiFillStepForward onClick={()=>playNext(track)}/></span>
                         <span className="alink5" style={{width:'auto'}}><ImLoop2 /></span>

@@ -7,6 +7,7 @@ import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { fetchMusic } from '../Redux/Action/fetchMusic';
 import { useNavigate } from 'react-router';
+import { fetchGenre } from '../Redux/Action/fetchGenre';
 
 
 
@@ -25,6 +26,12 @@ export const NavBar = () => {
             resetForm();
         },
     });
+    const handleExplore=()=>{
+        const genre='country';
+        navigate(`/explore`);
+        dispatch(fetchGenre(genre));
+    }
+
   return (
     <Navbar className='navbar'  expand="lg">
                 <Container fluid className='navbar-container'>
@@ -36,7 +43,7 @@ export const NavBar = () => {
                             style={{ maxHeight: '100px' }}
                             navbarScroll
                         >
-                            <Nav.Link><h4 className='navbar-option' onClick={()=>navigate(`/explore`)}>Explore</h4></Nav.Link>
+                            <Nav.Link><h4 className='navbar-option' onClick={handleExplore}>Explore</h4></Nav.Link>
                         </Nav>
                         <Form className="d-flex" onSubmit={handleSubmit}>
                             <FormControl
