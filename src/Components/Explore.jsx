@@ -36,7 +36,7 @@ export const Explore = () => {
                 </div>
                     </>
                     }></Route>
-                <Route path='tracks' element={<Songcard genre={genreList}/>}></Route>
+                <Route path='/tracks' element={<Songcard genre={genreList}/>}></Route>
             </Routes>
     )
 }
