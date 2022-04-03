@@ -19,16 +19,15 @@ const Musicplayer = () => {
                 <NavBar />
             </div>
             <div className="container">
-                <div className="row body-container" style={{ 'justifyContent': 'center', height: "650px" }}>
+                <div className="row body-container" style={{ 'justifyContent': 'center', height: "480px" }}>
                     <Routes>
                         <Route path='' element={<Bodymain />}></Route>
                         <Route path='/explore/*' element={<Explore />} >
                             
                         </Route>
 
-                        <Route path='/song' element={<Music songList={songList} />}></Route>
+                        <Route path='/song' element={isLoading ? <Loader /> :<Music songList={songList} />}></Route>
                     </Routes>
-                    {isLoading ? <Loader /> : null}
                 </div>
                 <Player />
             </div>

@@ -2,11 +2,11 @@
     background-color:#b4a8bf;
     box-shadow: 0px 5px 10px black;
     position: sticky;
-    z-index: 1;
 }
 .sticky{
         position: sticky;
         top: 0;
+        z-index: 1;
 }
 .navbar-option{
     margin-top: revert;

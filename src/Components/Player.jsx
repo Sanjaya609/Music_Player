@@ -52,7 +52,7 @@ export const Player = () => {
         dispatch(muteMusic());
     }
     return (
-        <div className="row" style={{ 'justifyContent': 'center',height:"7rem",'padding':'2rem 3rem 0 3rem','fontSize':'1.6rem'}}>
+        <div className="row" style={{ 'justifyContent': 'center',height:"4rem",'padding':'1rem 3rem 0 3rem','fontSize':'1.6rem'}}>
         {audio}
         <div className="col-xl-10" style={{ 'display': 'flex', height:"100%"}}>
                 <div className="song_info col-xl-2">

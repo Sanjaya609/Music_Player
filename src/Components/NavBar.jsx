@@ -20,7 +20,7 @@ export const NavBar = () => {
     const { values, error, handleSubmit, handleChange, resetForm } = useFormik({
         initialValues,
         onSubmit: (values, { resetForm }) => {
-            console.log(values);
+            // console.log(values);
             dispatch(fetchMusic(values.song));
             navigate(`/song`);
             resetForm();
@@ -33,7 +33,7 @@ export const NavBar = () => {
     }
 
   return (
-    <Navbar className='navbar'  expand="lg">
+    <Navbar className='navbar'  expand="lg" style={{'paddingTop':'0px','paddingBottom':'0px'}}>
                 <Container fluid className='navbar-container'>
                     <Navbar.Brand href="/" className='col-lg-2'><img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Deezer_logo.svg" alt="" /></Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />

@@ -18,8 +18,8 @@ const Music = ({ songList }) => {
   }
   return (
     <>
-      <div className="col-xl-8 left-body" >
-        <div className="col-xl-5">
+      <div className="col-lg-8 left-body" >
+        <div className="col-lg-5">
           <div className="card shadow p-3 bg-white rounded" style={{ "padding": "1.5rem", "width": "100%", 'border': 'none' }}>
             <div className="card-image" style={{ 'height': '250px', display: "flex", justifyContent: "center" }} >
               <img src={songList[0]?.artist?.picture_big} alt='Artist image' style={{ 'width': '100%' }} />
@@ -31,21 +31,20 @@ const Music = ({ songList }) => {
 
           {/* <h3 style={{'textAlign':'center',marginTop:'1rem'}}>{songList[0].artist.name}</h3> */}
         </div>
-        <div className="col-xl-7" style={{ 'padding': '3rem' }}>
+        <div className="col-lg-7" style={{ 'padding': '3rem' }}>
           <h5>Title track: {songList[0]?.artist?.name}  {songList[0]?.title}</h5>
           <h3>Deezer Rank: {songList[0]?.rank}</h3>
           <h5><a href={songList[0]?.link}>{songList[0]?.link}</a></h5>
         </div>
 
       </div>
-      <div className="col-xl-4 right-body" style={{'paddingTop':'4rem'}} >
-        <h3>Explore</h3>
+      <div className="col-lg-4 right-body" style={{'paddingTop':'2rem'}} >
         <h4>Select track</h4>
         <div className="row" style={{ 'justifyContent': 'flex-start','overflow': 'scroll',
-        'height':'450px',
+        'height':'400px',
         'overflowX': 'hidden'}}>
           {songList.map((song)=>(
-            <div key={song.id} onClick={()=>playSong(song)} className=" col-xl-5 card shadow p-3 bg-white rounded" style={{ "marginTop": "1rem",marginRight:'1rem', 'border': 'none', 'height': '210px' }}>
+            <div key={song.id} onClick={()=>playSong(song)} className=" col-lg-5 card shadow p-3 bg-white rounded" style={{ "marginTop": "1rem",marginRight:'1rem', 'border': 'none', 'height': '210px' }}>
               <div className="card-image" style={{ 'height': '80%', display: "flex", justifyContent: "center" }} >
                 <img src={song.artist.picture_big} alt='Artist image' style={{ 'width': '100%' }} />
               </div>
@@ -53,22 +52,6 @@ const Music = ({ songList }) => {
             </div>
           ))}
         </div>
-
-
-        {/* <div className="  col-xl-5 card shadow p-3 bg-white rounded" style={{ "padding": "1.5rem", 'border': 'none', 'height': '210px' }}>
-              <div className="card-image" style={{ 'height': '80%', display: "flex", justifyContent: "center" }} >
-              </div>
-            </div>
-          <div className="row" style={{ 'justifyContent': 'space-evenly', marginTop: '1rem' }}>
-            <div className=" col-xl-5 card shadow p-3 bg-white rounded" style={{ "padding": "1.5rem", 'border': 'none', 'height': '210px' }}>
-              <div className="card-image" style={{ 'height': '80%', display: "flex", justifyContent: "center" }} >
-              </div>
-            </div>
-            <div className="  col-xl-5 card shadow p-3 bg-white rounded" style={{ "padding": "1.5rem", 'border': 'none', 'height': '210px' }}>
-              <div className="card-image" style={{ 'height': '80%', display: "flex", justifyContent: "center" }} >
-              </div>
-            </div>
-          </div> */}
       </div></>
   )
 }
